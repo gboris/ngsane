@@ -1,0 +1,11 @@
+##############################################################
+# Sailfish 0.6.3
+# https://www.cs.cmu.edu/~ckingsf/software/sailfish/README.html
+TASK_SAILFISH="sailfish"
+WALLTIME_SAILFISH=24:00:00
+MEMORY_SAILFISH=20
+CPU_SAILFISH=4
+NODES_SAILFISH="nodes=1:ppn=1"
+INPUT_SAILFISH="fastq"
+MODULE_SAILFISH="${NG_SAILFISH}"
+PATH_SAILFISH=

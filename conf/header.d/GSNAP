@@ -1,0 +1,11 @@
+##############################################################
+# GMAP-GSNAP 2014-07
+# http://research-pub.gene.com/gmap/
+TASK_GSNAP="gsnap"
+WALLTIME_GSNAP=150:00:00
+MEMORY_GSNAP=8
+CPU_GSNAP=8
+NODES_GSNAP="nodes=1:ppn=1"
+INPUT_GSNAP="fastq"
+MODULE_GSNAP="${NG_BOOST} ${NG_JAVA} ${NG_PYTHON} ${NG_R} ${NG_SAMTOOLS} ${NG_IMAGEMAGIC} ${NG_IGVTOOLS} ${NG_PICARD} ${NG_SAMSTAT} ${NG_BEDTOOLS} ${NG_RNASEQC} ${NG_GSNAP}"
+PATH_GSNAP=

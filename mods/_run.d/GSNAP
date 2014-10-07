@@ -1,0 +1,49 @@
+#!/bin/bash -e
+
+
+
+################################################################################
+#   Trigger command for individual GSNAP
+#
+# IN : $SOURCE/$dir/INPUT_GSNAP/*.[inputfile.suffix]
+# OUT: $OUT/$dir/TASK_GSNAP/*.[outputfile.suffix]
+################################################################################
+
+
+
+if [ -n "$RUNGSNAP" ] || [ -n "$NGSANE_PIPELINECALL" ]; then
+    
+    ############################################################################
+    # Wether to submit a job or compile a report
+    if [ -z "$NGSANE_COMPILE_REPORT" ]; then
+
+        # HPC variables as defined in the corresponding resource script at NGSANE_BASE/conf/header.d/GSNAP
+        if [ -z "$TASK_GSNAP" ] || [ -z "$NODES_GSNAP" ] || [ -z "$CPU_GSNAP" ] || [ -z "$MEMORY_GSNAP" ] || [ -z "$WALLTIME_GSNAP" ]; then 
+            echo -e "\e[91m[ERROR]\e[0m Server misconfigured"; exit 1; 
+        fi
+        
+        # Choose ONE qsub call from below and fill in the variables as required and adapt as required
+    $QSUB $ARMED -k $CONFIG -t $TASK_STAR -i $INPUT_STAR -e $READONE.$FASTQ -n $NODES_STAR -c $CPU_STAR -m $MEMORY_STAR"G" -w $WALLTIME_STAR \
+        --command "${NGSANE_BASE}/mods/star.sh -k $CONFIG -f <FILE> -o $OUT/<DIR>/$TASK_STAR/<NAME>"
+      
+                   
+    ############################################################################
+    # Select either of the one below to provide a report for this mod
+    elif [ -n "$NGSANE_COMPILE_REPORT" ]; then
+
+        # start a new section for a mod
+        NGSANE_REPORT_HEADER "GSNAP" "$TASK_GSNAP" "GSNAP.sh" "$ASD.bam"
+
+  
+
+        # 2) or provide information that there will be no 
+        echo "[NOTE] the GSNAP.sh mod does not provide a report"
+
+        # finish the section
+        NGSANE_REPORT_FOOTER 
+        
+    fi
+    
+    # done
+fi
+

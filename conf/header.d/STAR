@@ -1,0 +1,11 @@
+##############################################################
+# STAR 2014-09
+# http://research-pub.gene.com/gmap/
+TASK_STAR="star"
+WALLTIME_STAR=150:00:00
+MEMORY_STAR=8
+CPU_STAR=8
+NODES_STAR="nodes=1:ppn=1"
+INPUT_STAR="fastq"
+MODULE_STAR="${NG_BOOST} ${NG_JAVA} ${NG_PYTHON} ${NG_R} ${NG_SAMTOOLS} ${NG_IMAGEMAGIC} ${NG_IGVTOOLS} ${NG_PICARD} ${NG_SAMSTAT} ${NG_BEDTOOLS} ${NG_RNASEQC} ${NG_STAR}"
+PATH_STAR=

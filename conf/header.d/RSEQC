@@ -1,0 +1,12 @@
+##############################################################
+# Run RSeQC from Bam
+# http://rseqc.sourceforge.net/
+TASK_RSEQC="rseqc"
+WALLTIME_RSEQC=48:00:00
+MEMORY_RSEQC=8
+CPU_RSEQC=1
+NODES_RSEQC="nodes=1:ppn=2"
+INPUT_RSEQC=$TASK_TOPHAT
+MODULE_RSEQC="${NG_PYTHON} ${NG_R} ${NG_SAMTOOLS} ${NG_BEDTOOLS} ${NG_RSEQC}"
+PATH_RSEQC=
+
